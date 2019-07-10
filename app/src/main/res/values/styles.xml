@@ -1,0 +1,121 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="actionModeBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="PlayAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/text_0</item>
+        <item name="colorPrimaryDark">@color/text_0</item>
+        <item name="colorAccent">@color/text_0</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TvPlayTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBarOverlay">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ThemeSplash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@mipmap/ic_splash_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"></style>
+
+
+    <style name="myProgressBar" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal_my</item>
+        <!--<item name="android:indeterminateDrawable">@drawable/progress_indeterminate_horizontal</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="alivc_info_seekbar" parent="@android:style/Widget.SeekBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:maxHeight">@dimen/alivc_info_seekbar_height</item>
+        <item name="android:minHeight">@dimen/alivc_info_seekbar_height</item>
+        <item name="android:paddingLeft">@dimen/alivc_info_seekbar_offset</item>
+        <item name="android:paddingRight">@dimen/alivc_info_seekbar_offset</item>
+        <item name="android:thumbOffset">@dimen/alivc_info_seekbar_offset</item>
+    </style>
+
+    <style name="Base.CardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+
+    <style name="CardView" parent="Base.CardView" />
+
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@color/cardview_dark_background</item>
+    </style>
+
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@color/cardview_light_background</item>
+    </style>
+
+    <style name="CircularProgress">
+        <item name="cpd_padding">7dp</item>
+        <item name="cpd_initialAngle">0</item>
+        <item name="cpd_maxSweepAngle">270</item>
+        <item name="cpd_minSweepAngle">1</item>
+        <item name="cpd_strokeSize">2dp</item>
+        <item name="cpd_strokeColor">#fff</item>
+        <item name="cpd_strokeSecondaryColor">@android:color/transparent</item>
+        <item name="cpd_reverse">false</item>
+        <item name="cpd_rotateDuration">1000</item>
+        <item name="cpd_transformDuration">600</item>
+        <item name="cpd_keepDuration">200</item>
+        <item name="cpd_transformInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="pv_progressMode">indeterminate</item>
+        <item name="cpd_inAnimDuration">0</item>
+        <item name="cpd_outAnimDuration">@android:integer/config_mediumAnimTime</item>
+    </style>
+
+    <attr name="pv_progressMode" format="integer">
+        <enum name="determinate" value="0x00000000" />
+        <enum name="indeterminate" value="0x00000001" />
+        <enum name="buffer" value="0x00000002" />
+        <enum name="query" value="0x00000003" />
+    </attr>
+
+    <style name="TTNotificationTitle">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="TTNotificationText">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_video"
+            android:checked="true"
+            android:icon="@mipmap/icon_video"
+            android:title="@string/menu_video" />
+        <item
+            android:id="@+id/nav_music"
+            android:icon="@mipmap/icon_music"
+            android:title="@string/menu_music" />
+        <item
+            android:id="@+id/nav_tv"
+            android:icon="@mipmap/icon_tv"
+            android:title="@string/menu_tv" />
+        <item
+            android:id="@+id/nav_welfare"
+            android:icon="@mipmap/icon_welfare"
+            android:title="@string/menu_welfare" />
+    </group>
+
+    <item android:title="半城烟花半城雪">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@mipmap/ic_share"
+                android:title="@string/menu_share" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@mipmap/icon_setting"
+                android:title="@string/menu_setting" />
+            <item
+                android:id="@+id/nav_mine"
+                android:icon="@mipmap/icon_mine"
+                android:title="@string/menu_mine" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/icon_about"
+                android:title="@string/menu_about" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chen.playerdemo.widget.InsetsPercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/musicplay_bg">
+
+    <com.chen.playerdemo.widget.musiccoverview.MusicCoverView
+        android:id="@+id/cover"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:transitionName="@string/app_name"
+        app:layout_heightPercent="35%"
+        app:shape="circle" />
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/track_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:layout_marginTopPercent="10%" />
+
+    <com.chen.playerdemo.widget.ProgressView
+        android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:transitionName="@string/app_name"
+        app:layout_aspectRatio="100%"
+        app:layout_heightPercent="40%" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="center"
+        android:src="@drawable/ic_pause_animatable"
+        android:transitionName="@string/app_name" />
+
+    <Space
+        android:id="@+id/timers_anchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cover"
+        android:layout_centerHorizontal="true"
+        app:layout_widthPercent="75%" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/timers_anchor"
+        android:layout_marginTop="-120dp"
+        android:layout_toStartOf="@id/timers_anchor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="@color/white"
+        android:transitionName="@string/app_name"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/timers_anchor"
+        android:layout_marginTop="-120dp"
+        android:layout_toEndOf="@id/timers_anchor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textColor="@color/white"
+        android:transitionName="@string/app_name"
+        tools:text="00:00" />
+
+    <LinearLayout
+        android:id="@+id/ordering"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/time"
+        android:layout_marginTop="125dp"
+        android:gravity="center"
+        android:transitionGroup="true">
+
+        <ImageView
+            android:id="@+id/repeat"
+            android:layout_width="@dimen/size_47"
+            android:layout_height="@dimen/size_47"
+            android:clickable="true"
+            android:padding="@dimen/size_10"
+            android:src="@mipmap/ic_play_order" />
+
+        <Space
+            android:layout_width="@dimen/activity_horizontal_margin"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/shuffle"
+            android:layout_width="@dimen/size_47"
+            android:layout_height="@dimen/size_47"
+            android:clickable="true"
+            android:padding="@dimen/size_10"
+            android:src="@mipmap/ic_play_list" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:transitionGroup="true"
+        app:layout_marginBottomPercent="5%">
+
+        <ImageView
+            android:id="@+id/previous"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_skip_previous_white_24dp" />
+
+        <ImageView
+            android:id="@+id/rewind"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_fast_rewind_white_24dp" />
+
+        <ImageView
+            android:id="@+id/forward"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_fast_forward_white_24dp" />
+
+        <ImageView
+            android:id="@+id/next"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_skip_next_white_24dp" />
+    </LinearLayout>
+</com.chen.playerdemo.widget.InsetsPercentRelativeLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension" />
+        <attr name="btnTextSize" format="dimension" />
+    </declare-styleable>
+
+    <!--优惠劵-->
+    <declare-styleable name="CouponsView">
+        <attr name="direction" format="integer">
+            <enum name="DOUBLE" value="0" />
+            <enum name="LEFT" value="1" />
+            <enum name="RIGHT" value="2" />
+        </attr>
+        <!--圆的颜色-->
+        <attr name="circle_color" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="timeline_style">
+        <attr name="marker" format="color|reference" />
+        <attr name="line" format="color|reference" />
+        <attr name="markerTopSize" format="dimension" />
+        <attr name="markerSize" format="dimension" />
+        <attr name="lineSize" format="dimension" />
+        <attr name="lineOrientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="linePadding" format="dimension" />
+        <attr name="markerInCenter" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="switchview">
+        <attr name="checked" format="boolean" />
+        <attr name="color_on" format="color" />
+        <attr name="color_off" format="color" />
+    </declare-styleable>
+
+
+    <!-- 圆形的ImageView -->
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+    <attr name="cardViewStyle" format="reference" />
+    <declare-styleable name="CardView">
+        <attr name="cardBackgroundColor" format="color" />
+        <attr name="cardCornerRadius" format="dimension" />
+        <attr name="cardElevation" format="dimension" />
+        <attr name="cardMaxElevation" format="dimension" />
+        <attr name="cardUseCompatPadding" format="boolean" />
+        <attr name="cardPreventCornerOverlap" format="boolean" />
+        <attr name="contentPadding" format="dimension" />
+        <attr name="contentPaddingLeft" format="dimension" />
+        <attr name="contentPaddingRight" format="dimension" />
+        <attr name="contentPaddingTop" format="dimension" />
+        <attr name="contentPaddingBottom" format="dimension" />
+        <attr name="cardShadowColorStart" format="color" />
+        <attr name="cardShadowColorEnd" format="color" />
+        <attr name="android:minWidth" />
+        <attr name="android:minHeight" />
+    </declare-styleable>
+
+    <declare-styleable name="ShadowContainer">
+        //阴影的颜色
+        <attr name="containerShadowColor" format="color" />
+        //阴影的圆角半径
+        <attr name="containerShadowRadius" format="dimension" />
+        //阴影展示的区域位置
+        <attr name="containerDeltaLength" format="dimension" />
+        //阴影的模糊半径，值越大阴影越大
+        <attr name="containerCornerRadius" format="dimension" />
+        //x方向的偏移量
+        <attr name="deltaX" format="dimension" />
+        //y方向的偏移量
+        <attr name="deltaY" format="dimension" />
+        //是否展示阴影,通过修改enable可以实现阴影的显示与隐藏，达到类似于选择器的效果
+        <attr name="enable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CircularProgressDrawable" tools:ignore="ResourceName">
+        <attr name="cpd_padding" format="reference|dimension" />
+        <attr name="cpd_initialAngle" format="reference|integer" />
+        <attr name="cpd_maxSweepAngle" format="reference|integer" />
+        <attr name="cpd_minSweepAngle" format="reference|integer" />
+        <attr name="cpd_strokeSize" format="reference|dimension" />
+        <attr name="cpd_strokeColor" format="reference|color" />
+        <attr name="cpd_strokeSecondaryColor" format="reference|color" />
+        <attr name="cpd_strokeColors" format="reference" />
+        <attr name="cpd_reverse" format="boolean" />
+        <attr name="cpd_rotateDuration" format="reference|integer" />
+        <attr name="cpd_transformDuration" format="reference|integer" />
+        <attr name="cpd_keepDuration" format="reference|integer" />
+        <attr name="cpd_transformInterpolator" format="reference" />
+        <attr name="cpd_inAnimDuration" format="reference|integer" />
+        <attr name="cpd_outAnimDuration" format="reference|integer" />
+        <attr name="cpd_inStepColors" format="reference" />
+        <attr name="cpd_inStepPercent" format="float" />
+        <attr name="pv_progressMode" />
+    </declare-styleable>
+
+    <declare-styleable name="MusicCoverView">
+        <attr name="shape" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+        <attr name="trackColor" format="color"/>
+    </declare-styleable>
+</resources>
