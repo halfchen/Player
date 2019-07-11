@@ -38,6 +38,7 @@ object PhotoViewer {
 
     private var clickView: WeakReference<View>? = null //点击那一张图片时候的view
     private var longClickListener: OnLongClickListener? = null
+    private var saveClickListener: OnSaveClickListener? = null
 
     private var indicatorType = INDICATOR_TYPE_DOT   // 默认type为小圆点
 
@@ -186,6 +187,11 @@ object PhotoViewer {
         return this
     }
 
+    fun setSaveClickListener(saveClickListener: OnSaveClickListener): PhotoViewer {
+        this.saveClickListener = saveClickListener
+        return this
+    }
+
     /**
      * 设置指示器的样式，但是如果图片大于9张，则默认设置为文字样式
      */
@@ -229,6 +235,11 @@ object PhotoViewer {
          * 文字版本当前页
          */
         var tv: TextView? = null
+
+        /**
+         * 保存按钮
+         */
+        var saveBtn: TextView? = null
 
         for (i in 0 until imgData.size) {
             val f = PhotoViewerFragment()
@@ -310,6 +321,7 @@ object PhotoViewer {
 
         frameLayout.post {
             mFrameLayout = FrameLayout(activity)
+
             if (imgData.size in 2..9 && indicatorType == INDICATOR_TYPE_DOT) {
 
                 /**
@@ -392,18 +404,35 @@ object PhotoViewer {
                 tv!!.setTextColor(Color.WHITE)
                 tv!!.gravity = Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM
                 tv!!.textSize = 18f
+                tv!!.setPadding(0,0,0,Utils.dp2px(activity, 20))
                 mFrameLayout!!.addView(tv)
                 val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT)
-                params.bottomMargin = Utils.dp2px(activity, 80)
+//                params.bottomMargin = Utils.dp2px(activity, 20)
                 frameLayout.addView(mFrameLayout, params)
-
             }
         }
+        saveBtn = TextView(activity)
+        saveBtn!!.text = "保存"
+        saveBtn!!.background = activity.resources.getDrawable(R.drawable.save_shape)
+        saveBtn!!.gravity = Gravity.CENTER
+        saveBtn!!.setTextColor(activity.resources.getColor(R.color.white))
+        val params = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT)
+        params.gravity = Gravity.BOTTOM or Gravity.RIGHT
+        params.bottomMargin = Utils.dp2px(activity, 20)
+        params.rightMargin = Utils.dp2px(activity, 20)
+        frameLayout!!.addView(saveBtn, params)
         decorView.addView(frameLayout, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         if (mCreatedInterface != null) {
             mCreatedInterface!!.onCreated()
         }
+
+        saveBtn!!.setOnClickListener(View.OnClickListener { v: View? ->
+            if (v != null) {
+                saveClickListener!!.onSaveClick(imgData[currentPage])
+            }
+        })
     }
 }

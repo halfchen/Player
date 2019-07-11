@@ -10,7 +10,7 @@ import android.os.SystemClock;
 public final class OnClickUtils {
 
     private static final long[] ONCLICK_TIME = new long[2]; // 数组的长度为2代表只记录双击操作
-    private static final int INTERVAL_TIME = 1500; // 限定间隔时长
+    private static final int INTERVAL_TIME = 2000; // 限定间隔时长
 
     /**
      * 是否在短时间内进行了双击操作

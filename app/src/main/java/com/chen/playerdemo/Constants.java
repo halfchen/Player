@@ -109,4 +109,13 @@ public class Constants {
         public static final String HKS = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";//香港卫视
         public static final String BSTV = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";//香港财经
     }
+
+    /**
+     * 下载类型
+     */
+    public class DownloadType {
+        public static final String IMAGE = "/image/";
+        public static final String VIDEO = "/video/";
+        public static final String MUSIC = "/music/";
+    }
 }

@@ -3,6 +3,7 @@ package com.chen.playerdemo.utils;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -226,15 +227,16 @@ public class FileUtils {
      *
      * @param mBitmap
      */
-    public static void savePic(Bitmap mBitmap, String path) {
+    public static void savePic(Context context, Bitmap mBitmap, String bmpName) {
         String sdStatus = Environment.getExternalStorageState();
         if (!sdStatus.equals(Environment.MEDIA_MOUNTED)) { // 检测sd是否可用
             return;
         }
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/dudu/picture/";
         FileOutputStream b = null;
         File file = new File(path);
         file.mkdirs();// 创建文件夹
-        String fileName = path + "head.jpg";// 图片名字
+        String fileName = path + bmpName;// 图片名字
         try {
             b = new FileOutputStream(fileName);
             mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, b);// 把数据写入文件
@@ -245,6 +247,10 @@ public class FileUtils {
                 // 关闭流
                 b.flush();
                 b.close();
+                //保存图片后发送广播通知更新数据库
+                Uri uri = Uri.fromFile(file);
+                context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+                ToastUtils.show("图片已保存到：" + fileName);
             } catch (IOException e) {
                 e.printStackTrace();
             }

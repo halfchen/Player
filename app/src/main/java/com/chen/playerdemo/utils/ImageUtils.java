@@ -17,12 +17,9 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.chen.playerdemo.App;
 import com.chen.playerdemo.R;
-
-import java.util.concurrent.ExecutionException;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 
@@ -82,19 +79,6 @@ public class ImageUtils {
                 .override(width, SIZE_ORIGINAL)
                 .fitCenter()
                 .into(imageView);
-    }
-
-    public void downLoad(String path) {
-        try {
-            Glide.with(App.getContext())
-                    .load(path)
-                    .downloadOnly(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                    .get();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

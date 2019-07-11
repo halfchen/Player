@@ -109,7 +109,7 @@ public class ToastUtils {
      */
     public static void show(CharSequence text) {
 
-        checkToastState();
+        cancel();
 
         if (text == null || text.equals("")) return;
 
@@ -127,7 +127,7 @@ public class ToastUtils {
     /**
      * 取消吐司的显示
      */
-    public void cancel() {
+    public static void cancel() {
         checkToastState();
         sToast.cancel();
     }

@@ -1,5 +1,6 @@
 package com.chen.playerdemo.view.activity;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -27,6 +28,8 @@ import com.chen.playerdemo.adapter.ViewHolder;
 import com.chen.playerdemo.base.BaseActivity;
 import com.chen.playerdemo.bean.music.PlayListDetail;
 import com.chen.playerdemo.contract.MusicListContract;
+import com.chen.playerdemo.download.DownloadManager;
+import com.chen.playerdemo.download.OnDownloadListener;
 import com.chen.playerdemo.presenter.MusicListPresenter;
 import com.chen.playerdemo.utils.ImageUtils;
 import com.chen.playerdemo.utils.SharedPref;
@@ -94,6 +97,8 @@ public class MusicListActivity extends BaseActivity<MusicListPresenter> implemen
     private TimerTaskManager mTimerTaskManager;
 
     private List<SongInfo> lastPlayList = new ArrayList<>();
+    private DownloadManager downloadManager;
+    private ProgressDialog mProgressDialog;
 
     @Override
     public int getLayoutId() {
@@ -111,6 +116,9 @@ public class MusicListActivity extends BaseActivity<MusicListPresenter> implemen
         String id = getIntent().getStringExtra(Constants.Jump.JUMP_ID);
         mPresenter.requestPlayListDetail(id);
         initAdapter();
+
+        downloadManager = DownloadManager.getInstance();
+        initProgressDialog();
     }
 
     private void initAdapter() {
@@ -212,8 +220,66 @@ public class MusicListActivity extends BaseActivity<MusicListPresenter> implemen
                         loadBitmap(SendMessageToWX.Req.WXSceneTimeline, url, title, description, bitmapUrl);
                     }
                 })
+                .onClick(R.id.download, new AnyLayer.OnLayerClickListener() {
+                    @Override
+                    public void onClick(AnyLayer anyLayer, View v) {
+                        anyLayer.dismiss();
+                        mProgressDialog.show();
+                        downloadManager.startDownload(url, title + ".mp3", downloadListener);
+                    }
+                })
                 .show();
     }
+
+    /**
+     * 下载进度
+     */
+    private void initProgressDialog() {
+        mProgressDialog = new ProgressDialog(this, R.style.DialogTheme);
+        mProgressDialog.setMessage("音乐下载中，请稍后...");
+        mProgressDialog.setMax(100);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void dismissProgressDialog() {
+        mProgressDialog.setProgress(0);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    private OnDownloadListener downloadListener = new OnDownloadListener() {
+        @Override
+        public void onException() {
+        }
+
+        @Override
+        public void onProgress(int progress) {
+            mProgressDialog.setProgress(progress);
+        }
+
+        @Override
+        public void onSuccess() {
+            ToastUtils.show("文件已保存在 Download/bukun 目录下");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onFailed() {
+            ToastUtils.show("下载失败");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onPaused() {
+        }
+
+        @Override
+        public void onCanceled() {
+        }
+    };
 
     private void initData() {
         if (MusicManager.getInstance().getNowPlayingSongInfo() == null) {

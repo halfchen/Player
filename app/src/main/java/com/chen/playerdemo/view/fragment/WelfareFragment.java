@@ -1,10 +1,12 @@
 package com.chen.playerdemo.view.fragment;
 
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -14,12 +16,17 @@ import com.chen.playerdemo.adapter.ViewHolder;
 import com.chen.playerdemo.base.BaseFragment;
 import com.chen.playerdemo.bean.gank.Welfare;
 import com.chen.playerdemo.contract.WelfareContract;
+import com.chen.playerdemo.download.DownloadManager;
+import com.chen.playerdemo.download.OnDownloadListener;
 import com.chen.playerdemo.presenter.WelfarePresenter;
 import com.chen.playerdemo.utils.ImageUtils;
+import com.chen.playerdemo.utils.OnClickUtils;
+import com.chen.playerdemo.utils.ToastUtils;
 import com.chen.playerdemo.widget.dialog.AnyLayer;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.wanglu.photoviewerlibrary.OnSaveClickListener;
 import com.wanglu.photoviewerlibrary.PhotoViewer;
 
 import java.util.ArrayList;
@@ -41,6 +48,8 @@ public class WelfareFragment extends BaseFragment<WelfarePresenter> implements W
     private int page = 1;
     //    private int width;
     private AnyLayer anyLayer;
+    private DownloadManager downloadManager;
+    private ProgressDialog mProgressDialog;
 
     public WelfareFragment() {
         // Required empty public constructor
@@ -79,6 +88,9 @@ public class WelfareFragment extends BaseFragment<WelfarePresenter> implements W
                 mPresenter.getWelfare(page);
             }
         });
+
+        downloadManager = DownloadManager.getInstance();
+        initProgressDialog();
     }
 
     @Override
@@ -123,6 +135,16 @@ public class WelfareFragment extends BaseFragment<WelfarePresenter> implements W
 
                                         }
                                     })
+                                    .setSaveClickListener(new OnSaveClickListener() {
+                                        @Override
+                                        public void onSaveClick(String url) {
+                                            if (OnClickUtils.isOnDoubleClick()) {
+                                                Log.e("====", "点击过快");
+                                            } else {
+                                                downloadImage(url);
+                                            }
+                                        }
+                                    })
                                     .start(WelfareFragment.this);
                         }
                     });
@@ -130,24 +152,65 @@ public class WelfareFragment extends BaseFragment<WelfarePresenter> implements W
             };
         }
 
-//        StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-//        gridLayoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_NONE);
-//        recyclerView.setItemAnimator(null);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-
-//        int spanCount = 2;
-//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-//                int[] first = new int[spanCount];
-//                gridLayoutManager.findFirstCompletelyVisibleItemPositions(first);
-//                if (newState == RecyclerView.SCROLL_STATE_IDLE && (first[0] == 1 || first[1] == 1)) {
-//                    gridLayoutManager.invalidateSpanAssignments();
-//                }
-//            }
-//        });
     }
+
+    private void downloadImage(String path) {
+        mProgressDialog.show();
+        downloadManager.startDownload(path, downloadListener);
+    }
+
+    /**
+     * 下载进度
+     */
+    private void initProgressDialog() {
+        mProgressDialog = new ProgressDialog(getContext(), R.style.DialogTheme);
+        mProgressDialog.setMessage("图片保存中，请稍后...");
+        mProgressDialog.setMax(100);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void dismissProgressDialog() {
+        mProgressDialog.setProgress(0);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    private OnDownloadListener downloadListener = new OnDownloadListener() {
+        @Override
+        public void onException() {
+
+        }
+
+        @Override
+        public void onProgress(int progress) {
+            mProgressDialog.setProgress(progress);
+        }
+
+        @Override
+        public void onSuccess() {
+            ToastUtils.show("文件已保存在 Download/bukun 目录下");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onFailed() {
+            ToastUtils.show("下载失败");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onPaused() {
+        }
+
+        @Override
+        public void onCanceled() {
+        }
+    };
 
     @Override
     public void setData(Welfare welfare) {

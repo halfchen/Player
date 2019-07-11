@@ -1,6 +1,7 @@
 package com.chen.playerdemo.view.activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,10 +18,13 @@ import com.chen.playerdemo.adapter.ViewHolder;
 import com.chen.playerdemo.base.BaseActivity;
 import com.chen.playerdemo.bean.video.AllRec;
 import com.chen.playerdemo.contract.VideoPlayContract;
+import com.chen.playerdemo.download.DownloadManager;
+import com.chen.playerdemo.download.OnDownloadListener;
 import com.chen.playerdemo.presenter.VideoPlayPresenter;
 import com.chen.playerdemo.utils.ImageUtils;
 import com.chen.playerdemo.utils.StringUtils;
 import com.chen.playerdemo.utils.TimeUtils;
+import com.chen.playerdemo.utils.ToastUtils;
 import com.chen.playerdemo.utils.WxShareUtils;
 import com.chen.playerdemo.widget.NormalGSYVideoPlayer;
 import com.chen.playerdemo.widget.dialog.AnimHelper;
@@ -49,6 +53,8 @@ public class VideoPlayActivity extends BaseActivity<VideoPlayPresenter> implemen
     private ImageView ivCoverVideo;
 
     private String url, title;
+    private ProgressDialog mProgressDialog;
+    private DownloadManager downloadManager;
 
     @Override
     public int getLayoutId() {
@@ -66,6 +72,8 @@ public class VideoPlayActivity extends BaseActivity<VideoPlayPresenter> implemen
         if (MusicManager.getInstance().isPlaying()) {
             MusicManager.getInstance().stopMusic();
         }
+        downloadManager = DownloadManager.getInstance();
+        initProgressDialog();
 
         initAdapter();
         ImageView mShare = detailPlayer.findViewById(R.id.share);
@@ -105,6 +113,14 @@ public class VideoPlayActivity extends BaseActivity<VideoPlayPresenter> implemen
                                 public void onClick(AnyLayer anyLayer, View v) {
                                     WxShareUtils.shareVideo(VideoPlayActivity.this, SendMessageToWX.Req.WXSceneTimeline, url, title, "", BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
                                     anyLayer.dismiss();
+                                }
+                            })
+                            .onClick(R.id.download, new AnyLayer.OnLayerClickListener() {
+                                @Override
+                                public void onClick(AnyLayer anyLayer, View v) {
+                                    anyLayer.dismiss();
+                                    mProgressDialog.show();
+                                    downloadManager.startDownload(url, title + ".mp4", downloadListener);
                                 }
                             })
                             .show();
@@ -225,6 +241,56 @@ public class VideoPlayActivity extends BaseActivity<VideoPlayPresenter> implemen
             }
         });
     }
+
+    /**
+     * 下载进度
+     */
+    private void initProgressDialog() {
+        mProgressDialog = new ProgressDialog(this, R.style.DialogTheme);
+        mProgressDialog.setMessage("视频下载中，请稍后...");
+        mProgressDialog.setMax(100);
+        mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
+    }
+
+    private void dismissProgressDialog() {
+        mProgressDialog.setProgress(0);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
+
+    private OnDownloadListener downloadListener = new OnDownloadListener() {
+        @Override
+        public void onException() {
+        }
+
+        @Override
+        public void onProgress(int progress) {
+            mProgressDialog.setProgress(progress);
+        }
+
+        @Override
+        public void onSuccess() {
+            ToastUtils.show("文件已保存在 Download/bukun 目录下");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onFailed() {
+            ToastUtils.show("下载失败");
+            dismissProgressDialog();
+        }
+
+        @Override
+        public void onPaused() {
+        }
+
+        @Override
+        public void onCanceled() {
+        }
+    };
 
     @Override
     public void onBackPressed() {
