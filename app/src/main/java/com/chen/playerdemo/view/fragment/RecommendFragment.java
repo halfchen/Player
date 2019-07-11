@@ -60,7 +60,6 @@ public class RecommendFragment extends BaseFragment<RecommendPresenter> implemen
         mPresenter = new RecommendPresenter();
         mPresenter.attachView(this);
 
-        refreshLayout.autoRefresh();
         mPresenter.getAllRec(page);
         refreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override

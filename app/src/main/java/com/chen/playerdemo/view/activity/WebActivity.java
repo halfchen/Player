@@ -112,7 +112,7 @@ public class WebActivity extends BaseActivity {
                 onBackPressed();
                 break;
             case R.id.close:
-                if (from.equals("ad")) {
+                if (!StringUtils.isEmpty(from) && from.equals("ad")) {
                     jumpActivity(Constants.PATH_MAIN);
                 }
                 finish();
@@ -126,7 +126,7 @@ public class WebActivity extends BaseActivity {
             webView.goBack();//返回上个页面
             return;
         }
-        if (from.equals("ad")) {
+        if (!StringUtils.isEmpty(from) && from.equals("ad")) {
             jumpActivity(Constants.PATH_MAIN);
         }
         super.onBackPressed();
