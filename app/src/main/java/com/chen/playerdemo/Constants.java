@@ -25,8 +25,6 @@ public class Constants {
     public static final String PATH_MUSICLIST = "/dudu/MusicList"; // 详情页
     public static final String PATH_MUSICDETAIL = "/dudu/MusicDetail"; // 详情播放页
 
-    public static final String PATH_TV = "/dudu/tv";//直播
-
     public static final String PATH_RANK = "/dudu/rank"; // 开眼排行榜
     public static final String PATH_CLASSIFY = "/dudu/classify"; // 开眼 全部分类
     public static final String PATH_VIDEO_PLAY = "/dudu/videoplay";//视频播放
@@ -36,14 +34,6 @@ public class Constants {
     public static final long ANIM_DURATION = 350;
 
     public static final String SAVE = "SavePlayList";//保存上次播放歌单
-
-    /**
-     * type, 用于区分播放类型, localSource
-     * vidsts: vid类型
-     * localSource: url类型
-     */
-    public static String PLAY_PARAM_TYPE = "localSource";
-    public static String PLAY_PARAM_URL = "";
 
     public class Jump {
         public static final String JUMP_ID = "id";
@@ -95,19 +85,6 @@ public class Constants {
         public static final String squareCardCollection = "squareCardCollection";//推荐 ItemCollection
         public static final String specialSquareCardCollection = "specialSquareCardCollection"; //发现 ItemCollection
         public static final String columnCardList = "columnCardList"; //发现 ItemCollection 专题策划
-    }
-
-    /**
-     * 视频直播流
-     */
-    public class TV {
-        public static final String HNTV = "rtmp://58.200.131.2:1935/livetv/hunantv";//湖南卫视
-        public static final String CCTV1 = "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";//CCTV1
-        public static final String CCTV3 = "http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8";//CCTV3
-        public static final String CCTV5 = "http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8";//CCTV5
-        public static final String CCTV6 = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8";//CCTV6
-        public static final String HKS = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";//香港卫视
-        public static final String BSTV = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";//香港财经
     }
 
     /**

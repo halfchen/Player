@@ -50,9 +50,6 @@ android {
             signingConfig signingConfigs.player
         }
     }
-    repositories {
-        flatDir { dirs 'libs' }
-    }
     compileOptions {
         incremental = true  //开启增量编译
 
@@ -65,9 +62,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(':mzbanner')
     api project(':photoviewer')
-    implementation(name: 'AliyunVodPlayer-3.4.9', ext: 'aar')
-    implementation(name: 'AlivcPlayer-3.4.9', ext: 'aar')
-    implementation(name: 'AlivcReporter-1.2', ext: 'aar')
     //noinspection GradleCompatible
     implementation "com.android.support:percent:28.0.0"
     //noinspection GradleCompatible

@@ -22,7 +22,6 @@ import com.chen.playerdemo.base.BaseActivity;
 import com.chen.playerdemo.utils.OnClickUtils;
 import com.chen.playerdemo.utils.ToastUtils;
 import com.chen.playerdemo.view.fragment.MusicFragment;
-import com.chen.playerdemo.view.fragment.TvFragment;
 import com.chen.playerdemo.view.fragment.VideoFragment;
 import com.chen.playerdemo.view.fragment.WelfareFragment;
 
@@ -51,7 +50,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     private FragmentTransaction transaction;
     private VideoFragment mVideoFragment;
     private MusicFragment mMusicFragment;
-    private TvFragment mTvFragment;
     private WelfareFragment mWelfareFragment;
 
     @Override
@@ -74,7 +72,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         transaction = fragmentManager.beginTransaction();
         mVideoFragment = VideoFragment.newInstance();
         mMusicFragment = MusicFragment.newInstance();
-        mTvFragment = TvFragment.newInstance();
         mWelfareFragment = WelfareFragment.newInstance();
 
         transaction.replace(R.id.fragment, mVideoFragment);
@@ -135,16 +132,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 mMusicFragment = new MusicFragment();
             }
             transaction.replace(R.id.fragment, mMusicFragment);
-        } else if (id == R.id.nav_tv) {
-            mTvTitle.setText("TV");
-            mTvTitle.setVisibility(View.VISIBLE);
-            mIvRank.setVisibility(View.INVISIBLE);
-            mIvSearch.setVisibility(View.INVISIBLE);
-            tabs.setVisibility(View.GONE);
-            if (mTvFragment == null) {
-                mTvFragment = new TvFragment();
-            }
-            transaction.replace(R.id.fragment, mTvFragment);
         } else if (id == R.id.nav_welfare) {
             mTvTitle.setText("福利");
             mTvTitle.setVisibility(View.VISIBLE);

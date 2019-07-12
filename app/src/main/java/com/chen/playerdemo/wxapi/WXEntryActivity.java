@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.chen.playerdemo.Constants;
-import com.chen.playerdemo.utils.ToastUtils;
-import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -51,33 +48,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
      */
     @Override
     public void onResp(BaseResp baseResp) {
-        switch (baseResp.errCode) {
-            // 正确返回
-            case BaseResp.ErrCode.ERR_OK:
-                switch (baseResp.getType()) {
-                    // ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX是微信分享，api自带
-                    case ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX:
-                        // 只是做了简单的finish操作
-                        ToastUtils.show("分享成功");
-                        finish();
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                // 错误返回
-                switch (baseResp.getType()) {
-                    // 微信分享
-                    case ConstantsAPI.COMMAND_SENDMESSAGE_TO_WX:
-                        Log.i("WXEntryActivity", ">>>errCode = " + baseResp.errCode);
-                        ToastUtils.show("分享失败");
-                        finish();
-                        break;
-                    default:
-                        break;
-                }
-                break;
-        }
+        // 分享官方不给出分享结果，无法判断是否分享成功
+        // 这里只是做了简单的finish操作
+        finish();
     }
 }
