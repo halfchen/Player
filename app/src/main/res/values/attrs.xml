@@ -21,27 +21,11 @@
         <attr name="circle_color" format="color" />
     </declare-styleable>
 
-
-    <declare-styleable name="timeline_style">
-        <attr name="marker" format="color|reference" />
-        <attr name="line" format="color|reference" />
-        <attr name="markerTopSize" format="dimension" />
-        <attr name="markerSize" format="dimension" />
-        <attr name="lineSize" format="dimension" />
-        <attr name="lineOrientation" format="enum">
-            <enum name="horizontal" value="0" />
-            <enum name="vertical" value="1" />
-        </attr>
-        <attr name="linePadding" format="dimension" />
-        <attr name="markerInCenter" format="boolean" />
-    </declare-styleable>
-
     <declare-styleable name="switchview">
         <attr name="checked" format="boolean" />
         <attr name="color_on" format="color" />
         <attr name="color_off" format="color" />
     </declare-styleable>
-
 
     <!-- 圆形的ImageView -->
     <declare-styleable name="CircleImageView">

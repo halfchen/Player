@@ -134,6 +134,7 @@
     <!-- more-->
     <dimen name="alivc_more_dialog_height">275dp</dimen>
     <dimen name="alivc_more_features_font">12dp</dimen>
+
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
 </resources>
