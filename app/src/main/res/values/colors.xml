@@ -11,6 +11,7 @@
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="transparentColor">#0000</color>
     <color name="white">#ffffff</color>
+    <color name="orange">#FFCDCA</color>
 
     <color name="transparent">#00000000</color>
     <color name="bg_gray">#ff747674</color>

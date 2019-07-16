@@ -36,6 +36,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTvTitle.setSelected(true);
         String url = getIntent().getStringExtra("url");
         String title = getIntent().getStringExtra("title");
         from = getIntent().getStringExtra("from");

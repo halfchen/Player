@@ -1,1 +1,1 @@
-include ':app', ':mzbanner', ':photoviewer'
+include ':app', ':mzbanner'

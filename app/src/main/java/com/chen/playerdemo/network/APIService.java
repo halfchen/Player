@@ -1,7 +1,7 @@
 package com.chen.playerdemo.network;
 
 import com.chen.playerdemo.Constants;
-import com.chen.playerdemo.bean.gank.Welfare;
+import com.chen.playerdemo.bean.gank.GankBean;
 import com.chen.playerdemo.bean.music.BannerInfo;
 import com.chen.playerdemo.bean.music.HighQuality;
 import com.chen.playerdemo.bean.music.PlayListDetail;
@@ -12,6 +12,7 @@ import com.chen.playerdemo.bean.video.FindBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -144,11 +145,25 @@ public interface APIService {
 
 
     /**
-     * 福利
+     * Gank
      *
      * @return
      */
-    @GET(Constants.GankUrl.welfare)
-    Flowable<Welfare> getWelfare();
+    @GET("data/{type}/{count}/{pageIndex}")
+    Flowable<GankBean> getGankData(@Path("type") String type,
+                                   @Path("count") int count,
+                                   @Path("pageIndex") int pageIndex);
 
+    /**
+     * Gank搜索
+     *
+     * @param input
+     * @param type
+     * @param pageIndex
+     * @return
+     */
+    @GET("search/query/{input}/category/{type}/count/10/page/{pageIndex}")
+    Flowable<GankBean> gankSearch(@Path("input") String input,
+                                  @Path("type") String type,
+                                  @Path("pageIndex") int pageIndex);
 }

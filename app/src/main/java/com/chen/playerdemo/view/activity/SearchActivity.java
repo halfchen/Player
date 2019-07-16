@@ -51,8 +51,6 @@ import butterknife.OnClick;
 @Route(path = Constants.PATH_SEARCH)
 public class SearchActivity extends BaseActivity<SearchPresenter> implements SearchContract.View {
 
-    @BindView(R.id.ll_search)
-    LinearLayout searchBar;
     @BindView(R.id.clear)
     ImageView clear;
     @BindView(R.id.edt_search)

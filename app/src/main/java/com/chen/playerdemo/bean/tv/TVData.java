@@ -6,15 +6,9 @@ package com.chen.playerdemo.bean.tv;
  **/
 public class TVData {
 
+    private String type;
     private String name;
-    private String url;
-    private int colorId;
-
-    public TVData(String name, String url, int colorId) {
-        this.name = name;
-        this.url = url;
-        this.colorId = colorId;
-    }
+    private String live;
 
     public String getName() {
         return name == null ? "" : name;
@@ -24,19 +18,19 @@ public class TVData {
         this.name = name;
     }
 
-    public String getUrl() {
-        return url == null ? "" : url;
+    public String getType() {
+        return type == null ? "" : type;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getColorId() {
-        return colorId;
+    public String getLive() {
+        return live == null ? "" : live;
     }
 
-    public void setColorId(int colorId) {
-        this.colorId = colorId;
+    public void setLive(String live) {
+        this.live = live;
     }
 }

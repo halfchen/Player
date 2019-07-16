@@ -10,7 +10,9 @@ import android.support.annotation.Nullable;
 import android.util.TypedValue;
 import android.view.View;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.Random;
@@ -23,6 +25,28 @@ import java.util.UUID;
  * @date 2018/10/25
  */
 public class Utils {
+
+    /**
+     * 直接从assets读取文件
+     *
+     * @param context
+     * @param fileName
+     * @return
+     */
+    public static String getFromAssets(Context context, String fileName) {
+        try {
+            InputStreamReader inputReader = new InputStreamReader(context.getResources().getAssets().open(fileName));
+            BufferedReader bufReader = new BufferedReader(inputReader);
+            String line = "";
+            String Result = "";
+            while ((line = bufReader.readLine()) != null)
+                Result += line;
+            return Result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     /**
      * 从当前上下文获取Activity

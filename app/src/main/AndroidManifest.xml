@@ -74,6 +74,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".view.activity.GankSearchActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".view.activity.MusicListActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
@@ -83,18 +88,25 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.activity.TVPlayActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="landscape"
             android:theme="@style/TvPlayTheme" />
         <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:exported="true"
-            android:taskAffinity="net.sourceforge.simcpux"
-            android:launchMode="singleTask">
+            android:name=".view.activity.ImageBrowserActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/ImageBrowserTheme">
+            <meta-data
+                android:name="android.notch_support"
+                android:value="true" />
         </activity>
-
-        <!-- 解决9.0不支持http请求 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="net.sourceforge.simcpux"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity> <!-- 解决9.0不支持http请求 -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

@@ -32,6 +32,7 @@ public class Constants {
     public static final String PATH_VIDEO_PLAY = "/dudu/videoplay";//视频播放
     public static final String PATH_WEB = "/dudu/web";//活动
     public static final String PATH_SEARCH = "/dudu/search";//搜索
+    public static final String PATH_GANK_SEARCH = "/dudu/ganksearch";//Gank搜索
 
     public static final long ANIM_DURATION = 350;
 
@@ -73,7 +74,6 @@ public class Constants {
     public static class GankUrl {
         public static final String base = "http://gank.io/api/";
 
-        public static final String welfare = "data/福利/1000/1";
     }
 
     public class DataType {
@@ -95,27 +95,5 @@ public class Constants {
         public static final String squareCardCollection = "squareCardCollection";//推荐 ItemCollection
         public static final String specialSquareCardCollection = "specialSquareCardCollection"; //发现 ItemCollection
         public static final String columnCardList = "columnCardList"; //发现 ItemCollection 专题策划
-    }
-
-    /**
-     * 视频直播流
-     */
-    public class TV {
-        public static final String HNTV = "rtmp://58.200.131.2:1935/livetv/hunantv";//湖南卫视
-        public static final String CCTV1 = "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";//CCTV1
-        public static final String CCTV3 = "http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8";//CCTV3
-        public static final String CCTV5 = "http://ivi.bupt.edu.cn/hls/cctv5phd.m3u8";//CCTV5
-        public static final String CCTV6 = "http://ivi.bupt.edu.cn/hls/cctv6hd.m3u8";//CCTV6
-        public static final String HKS = "rtmp://live.hkstv.hk.lxdns.com/live/hks1";//香港卫视
-        public static final String BSTV = "rtmp://202.69.69.180:443/webcast/bshdlive-pc";//香港财经
-    }
-
-    /**
-     * 下载类型
-     */
-    public class DownloadType {
-        public static final String IMAGE = "/image/";
-        public static final String VIDEO = "/video/";
-        public static final String MUSIC = "/music/";
     }
 }

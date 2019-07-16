@@ -18,6 +18,10 @@
             android:icon="@mipmap/icon_tv"
             android:title="@string/menu_tv" />
         <item
+            android:id="@+id/nav_gank"
+            android:icon="@mipmap/icon_gank"
+            android:title="@string/menu_gank" />
+        <item
             android:id="@+id/nav_welfare"
             android:icon="@mipmap/icon_welfare"
             android:title="@string/menu_welfare" />
