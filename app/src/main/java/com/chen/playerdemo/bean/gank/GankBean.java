@@ -14,7 +14,6 @@ public class GankBean {
     private List<ResultsBean> results;
 
     public boolean isError() {
-
         return error;
     }
 

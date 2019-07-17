@@ -12,7 +12,6 @@ public class LoginCheckBean {
     public LoginCheckBean() {
     }
 
-
     public boolean isPlayAd() {
         return isPlayAd;
     }

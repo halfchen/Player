@@ -63,6 +63,8 @@ public class GankSearchActivity extends BaseActivity<GankSearchPresenter> implem
     TextView mTvType;
     @BindView(R.id.ll_search)
     LinearLayout ll_search;
+    @BindView(R.id.ivnull)
+    ImageView mIvNull;
 
     private String value;
     private List<GankBean.ResultsBean> mList = new ArrayList<>();
@@ -111,6 +113,9 @@ public class GankSearchActivity extends BaseActivity<GankSearchPresenter> implem
                         return true;
                     }
                     //  下面就是大家的业务逻辑
+                    mList.clear();
+                    adapter.notifyDataSetChanged();
+                    mIvNull.setVisibility(View.VISIBLE);
                     page = 1;
                     mPresenter.getSearch(value, type, page);
                     hideKeyboard(GankSearchActivity.this, mEdtSearch);
@@ -131,6 +136,9 @@ public class GankSearchActivity extends BaseActivity<GankSearchPresenter> implem
 
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mList.clear();
+                adapter.notifyDataSetChanged();
+                mIvNull.setVisibility(View.VISIBLE);
                 page = 1;
                 mPresenter.getSearch(value, type, page);
             }
@@ -233,6 +241,13 @@ public class GankSearchActivity extends BaseActivity<GankSearchPresenter> implem
                                     } else {
                                         type = item;
                                     }
+                                    if (!StringUtils.isEmpty(value)) {
+                                        mList.clear();
+                                        adapter.notifyDataSetChanged();
+                                        mIvNull.setVisibility(View.VISIBLE);
+                                        page = 1;
+                                        mPresenter.getSearch(value, type, page);
+                                    }
                                     anyLayer.dismiss();
                                 }
                             });
@@ -252,6 +267,9 @@ public class GankSearchActivity extends BaseActivity<GankSearchPresenter> implem
                 mList.addAll(gankBean.getResults());
             } else {
                 mList.addAll(gankBean.getResults());
+            }
+            if (mList.size() > 0){
+                mIvNull.setVisibility(View.GONE);
             }
             adapter.notifyDataSetChanged();
         }

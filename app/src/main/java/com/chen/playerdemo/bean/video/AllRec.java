@@ -621,7 +621,6 @@ public class AllRec {
                     this.rightText = rightText;
                 }
 
-
                 public static class LabelListBean {
                     /**
                      * text : 360°全景

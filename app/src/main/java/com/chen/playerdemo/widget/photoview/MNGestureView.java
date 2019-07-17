@@ -112,7 +112,6 @@ public class MNGestureView extends RelativeLayout {
         setBackgroundColor(Color.BLACK);
     }
 
-
     public interface OnSwipeListener {
         //向下滑动
         void downSwipe();
@@ -123,7 +122,6 @@ public class MNGestureView extends RelativeLayout {
         //正在滑动
         void onSwiping(float y);
     }
-
 
     private OnSwipeListener onSwipeListener;
 

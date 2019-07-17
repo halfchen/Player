@@ -39,7 +39,6 @@ public class RecommendPresenter extends BasePresenter<RecommendContract.View> im
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.e("====", throwable.toString());
-
                     }
                 });
     }

@@ -473,7 +473,6 @@ public class MusicListActivity extends BaseActivity<MusicListPresenter> implemen
 
     @Override
     public void onBuffering() {
-
     }
 
     @Override
