@@ -67,6 +67,8 @@ public class WebActivity extends BaseActivity {
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
 
+        webSettings.setMediaPlaybackRequiresUserGesture(false);
+
         //复写shouldOverrideUrlLoading()方法，使得打开网页时不调用系统浏览器， 而是在本WebView中显示
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -97,13 +99,28 @@ public class WebActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        webView.onResume();
+        if (webView != null) {
+            webView.resumeTimers();
+            webView.onResume();
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        webView.onPause();
+        if (webView != null) {
+            webView.onPause();
+            webView.pauseTimers();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (webView != null) {
+            webView.destroy();
+            webView = null;
+        }
+        super.onDestroy();
     }
 
     @OnClick({R.id.back, R.id.close})

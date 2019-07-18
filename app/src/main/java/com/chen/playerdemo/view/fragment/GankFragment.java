@@ -142,6 +142,7 @@ public class GankFragment extends BaseFragment<GankPresenter> implements GankCon
                     outRect.top = DimensUtils.dp2px(getContext(), 15);
                 } else if (position == mList.size() - 1) {
                     outRect.bottom = DimensUtils.dp2px(getContext(), 15);
+                    outRect.top = DimensUtils.dp2px(getContext(), 8);
                 } else {
                     outRect.top = DimensUtils.dp2px(getContext(), 8);
                 }

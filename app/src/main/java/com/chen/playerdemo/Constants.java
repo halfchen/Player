@@ -34,6 +34,12 @@ public class Constants {
     public static final String PATH_SEARCH = "/dudu/search";//搜索
     public static final String PATH_GANK_SEARCH = "/dudu/ganksearch";//Gank搜索
 
+    public static final String PATH_TOOLS = "/dudu/tools";//工具
+    public static final String PATH_HISTORY = "/dudu/history";//历史上的今天
+    public static final String PATH_CALENDAR = "/dudu/calendar";//万年历
+    public static final String PATH_MOBILE = "/dudu/mobile";//手机号码归属地查询
+    public static final String PATH_WX_ARTICLE = "/dudu/wx_article";//微信精选
+
     public static final long ANIM_DURATION = 350;
 
     public static final String SAVE = "SavePlayList";//保存上次播放歌单
@@ -73,7 +79,26 @@ public class Constants {
 
     public static class GankUrl {
         public static final String base = "http://gank.io/api/";
+    }
 
+    public static class Mob {
+        public static final String Mob_key = "2bbdbbc08f2c2";
+
+        public static final String MOB_BASE = "http://apicloud.mob.com/";
+
+        public static final String citys = "v1/weather/citys";//城市列表查询接口 需要参数：key, city, province
+        public static final String weather = "v1/weather/query";//获取天气信息  需要参数：key
+        public static final String calendar = "appstore/calendar/day";//万年历查询  需要参数：key, date[2015-05-01]
+        public static final String mobile = "v1/mobile/address/query";//手机号码归属地查询  需要参数：key, phone
+
+        public static final String category = "wx/article/category/query";//微信精选分类查询  需要参数：key (获取微信精选列表查询所需的cid参数)
+        public static final String article = "wx/article/search";//微信精选列表查询  需要参数：key,
+        // cid[1:时尚 2:热点 3:健康 5:百科 7:娱乐 8:美文 9:旅行 10:媒体达人 11:搞笑 12:影视音乐 13:互联网
+        // 14:文史 15:金融 16:体育 17:游戏 18:两性 19:社交交友 20:女人 23:购物 24:美女 25:微信技巧
+        // 26:星座 27:美食 28:教育 29:职场 30:酷品 31:母婴 32:摄影 33:创投 34:典藏 35:家装 36:汽车 37:段子], page, size
+
+        public static final String history = "appstore/history/query";//历史上今天  需要参数：key, day[0716]
+        public static final String dictionary = "appstore/dictionary/query";//新华字典查询  需要参数：key, name
     }
 
     public class DataType {

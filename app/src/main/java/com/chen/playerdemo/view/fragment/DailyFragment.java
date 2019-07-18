@@ -338,6 +338,9 @@ public class DailyFragment extends BaseFragment<DailyPresenter> implements Daily
                             }
                             if (item.getData().getContent().getData().getDuration() != 0) {
                                 holder.setText(R.id.duration, TimeUtils.formatVideoTime((long) item.getData().getContent().getData().getDuration()));
+                                holder.setViewVisibility(R.id.duration, View.VISIBLE);
+                            } else {
+                                holder.setViewVisibility(R.id.duration, View.GONE);
                             }
                         }
                     } else if (item.getData().getDataType().equals(Constants.DataType.TextCard)) {

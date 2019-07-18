@@ -30,6 +30,10 @@
     <item android:title="半城烟花半城雪">
         <menu>
             <item
+                android:id="@+id/nav_tool"
+                android:icon="@mipmap/icon_tool"
+                android:title="@string/menu_tool" />
+            <item
                 android:id="@+id/nav_share"
                 android:icon="@mipmap/icon_share"
                 android:title="@string/menu_share" />

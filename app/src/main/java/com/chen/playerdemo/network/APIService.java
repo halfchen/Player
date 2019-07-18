@@ -6,6 +6,14 @@ import com.chen.playerdemo.bean.music.BannerInfo;
 import com.chen.playerdemo.bean.music.HighQuality;
 import com.chen.playerdemo.bean.music.PlayListDetail;
 import com.chen.playerdemo.bean.music.PlayListInfo;
+import com.chen.playerdemo.bean.tools.ArticleData;
+import com.chen.playerdemo.bean.tools.CalendarData;
+import com.chen.playerdemo.bean.tools.CategoryData;
+import com.chen.playerdemo.bean.tools.CityData;
+import com.chen.playerdemo.bean.tools.DictionaryData;
+import com.chen.playerdemo.bean.tools.HistoryData;
+import com.chen.playerdemo.bean.tools.MobileData;
+import com.chen.playerdemo.bean.tools.WeatherData;
 import com.chen.playerdemo.bean.video.AllRec;
 import com.chen.playerdemo.bean.video.CategoriesBean;
 import com.chen.playerdemo.bean.video.FindBean;
@@ -21,6 +29,7 @@ import retrofit2.http.Query;
  **/
 public interface APIService {
 
+    /************************************* 网易云音乐api *****************************************/
     /**
      * 精品推荐
      *
@@ -63,6 +72,7 @@ public interface APIService {
     Flowable<PlayListInfo> requestPersonalized();
 
 
+    /************************************* 开眼api *****************************************/
     /**
      * 推荐
      *
@@ -144,6 +154,7 @@ public interface APIService {
                                @Query("query") String query);
 
 
+    /************************************* Gank api *****************************************/
     /**
      * Gank
      *
@@ -166,4 +177,96 @@ public interface APIService {
     Flowable<GankBean> gankSearch(@Path("input") String input,
                                   @Path("type") String type,
                                   @Path("pageIndex") int pageIndex);
+
+
+    /************************************* Mob api *****************************************/
+    /**
+     * 城市列表查询接口
+     *
+     * @param key
+     * @param city
+     * @param province
+     * @return
+     */
+    @GET(Constants.Mob.citys)
+    Flowable<CityData> getCitys(@Query("key") String key,
+                                @Query("city") String city,
+                                @Query("province") String province);
+
+    /**
+     * 获取天气信息
+     *
+     * @param key
+     * @return
+     */
+    @GET(Constants.Mob.weather)
+    Flowable<WeatherData> getWeather(@Query("key") String key);
+
+    /**
+     * 万年历查询
+     *
+     * @param key
+     * @param date 2015-05-01
+     * @return
+     */
+    @GET(Constants.Mob.calendar)
+    Flowable<CalendarData> getCalendar(@Query("key") String key,
+                                       @Query("date") String date);
+
+    /**
+     * 历史上今天
+     *
+     * @param key
+     * @param day 0716
+     * @return
+     */
+    @GET(Constants.Mob.history)
+    Flowable<HistoryData> getHistory(@Query("key") String key,
+                                     @Query("day") String day);
+
+    /**
+     * 手机号码归属地查询
+     *
+     * @param key
+     * @param phone
+     * @return
+     */
+    @GET(Constants.Mob.mobile)
+    Flowable<MobileData> getMobile(@Query("key") String key,
+                                   @Query("phone") String phone);
+
+    /**
+     * 新华字典查询
+     *
+     * @param key
+     * @param name
+     * @return
+     */
+    @GET(Constants.Mob.dictionary)
+    Flowable<DictionaryData> getDictionary(@Query("key") String key,
+                                           @Query("name") String name);
+
+    /**
+     * 微信精选分类查询
+     *
+     * @param key
+     * @return
+     */
+    @GET(Constants.Mob.category)
+    Flowable<CategoryData> getCategory(@Query("key") String key);
+
+    /**
+     * 微信精选列表查询
+     *
+     * @param key
+     * @param cid
+     * @param page
+     * @param size
+     * @return
+     */
+    @GET(Constants.Mob.article)
+    Flowable<ArticleData> getArticle(@Query("key") String key,
+                                     @Query("cid") String cid,
+                                     @Query("page") int page,
+                                     @Query("size") int size);
 }

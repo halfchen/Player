@@ -43,11 +43,12 @@ public class TimeUtils {
 
     /**
      * 日期格式字符串转换时间戳(毫秒)
+     *
      * @param beginDate
      * @param format
      * @return
      */
-    public static String date2TimeStamp(Date beginDate, int distanceDay,  String format) {
+    public static String date2TimeStamp(Date beginDate, int distanceDay, String format) {
         String date = getOldDateByDay(beginDate, distanceDay);
         try {
             SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -61,6 +62,7 @@ public class TimeUtils {
 
     /**
      * 获取某个日期前后N天的日期
+     * 返回时间格式 yyyy-MM-dd HH:mm:ss
      *
      * @param beginDate
      * @param distanceDay 前后几天 如获取前7天日期则传-7即可；如果后7天则传7
@@ -79,5 +81,39 @@ public class TimeUtils {
             e.printStackTrace();
         }
         return dft.format(endDate) + " 09:00:00";
+    }
+
+    /**
+     * 获取某个日期前后N天的日期
+     * 返回时间格式 yyyy-MM-dd
+     *
+     * @param beginDate
+     * @param distanceDay 前后几天 如获取前7天日期则传-7即可；如果后7天则传7
+     * @return
+     */
+    public static String getOldDateByDay2(Date beginDate, int distanceDay) {
+        String format = "yyyy-MM-dd";
+        SimpleDateFormat dft = new SimpleDateFormat(format);
+        Calendar date = Calendar.getInstance();
+        date.setTime(beginDate);
+        date.set(Calendar.DATE, date.get(Calendar.DATE) + distanceDay);
+        Date endDate = null;
+        try {
+            endDate = dft.parse(dft.format(date.getTime()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dft.format(endDate);
+    }
+
+    /**
+     * 获取历史上的今天的日期
+     *
+     * @param data
+     * @return
+     */
+    public static String getMobHistoryDate(Date data) {
+        SimpleDateFormat dft = new SimpleDateFormat("MMdd");
+        return dft.format(data);
     }
 }

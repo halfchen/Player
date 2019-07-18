@@ -163,6 +163,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             } else {
                 transaction.show(mWelfareFragment);
             }
+        } else if (id == R.id.nav_tool) {
+            jumpActivity(Constants.PATH_TOOLS);
         } else if (id == R.id.nav_share) {
             ToastUtils.show("暂未开发");
         } else if (id == R.id.nav_setting) {

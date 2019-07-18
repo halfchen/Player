@@ -13,6 +13,10 @@
     <color name="white">#ffffff</color>
     <color name="orange">#FFCDCA</color>
 
+    <color name="gray">#888888</color>
+    <color name="green">#0b988f</color>
+    <color name="red">#e9240a</color>
+
     <color name="transparent">#00000000</color>
     <color name="bg_gray">#ff747674</color>
     <color name="bg_f4">#f4f4f4</color>
