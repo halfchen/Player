@@ -53,8 +53,8 @@ public class DictionaryData {
          * wubi : baiy
          */
 
-        private int bihua;
-        private int bihuaWithBushou;
+        private String bihua;
+        private String bihuaWithBushou;
         private String brief;
         private String bushou;
         private String detail;
@@ -62,19 +62,19 @@ public class DictionaryData {
         private String pinyin;
         private String wubi;
 
-        public int getBihua() {
-            return bihua;
+        public String getBihua() {
+            return bihua == null ? "" : bihua;
         }
 
-        public void setBihua(int bihua) {
+        public void setBihua(String bihua) {
             this.bihua = bihua;
         }
 
-        public int getBihuaWithBushou() {
-            return bihuaWithBushou;
+        public String getBihuaWithBushou() {
+            return bihuaWithBushou == null ? "" : bihuaWithBushou;
         }
 
-        public void setBihuaWithBushou(int bihuaWithBushou) {
+        public void setBihuaWithBushou(String bihuaWithBushou) {
             this.bihuaWithBushou = bihuaWithBushou;
         }
 

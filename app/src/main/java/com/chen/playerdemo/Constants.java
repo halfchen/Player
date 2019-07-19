@@ -35,10 +35,12 @@ public class Constants {
     public static final String PATH_GANK_SEARCH = "/dudu/ganksearch";//Gank搜索
 
     public static final String PATH_TOOLS = "/dudu/tools";//工具
+    public static final String PATH_WEATHER = "/dudu/weather";//天气信息
     public static final String PATH_HISTORY = "/dudu/history";//历史上的今天
     public static final String PATH_CALENDAR = "/dudu/calendar";//万年历
     public static final String PATH_MOBILE = "/dudu/mobile";//手机号码归属地查询
     public static final String PATH_WX_ARTICLE = "/dudu/wx_article";//微信精选
+    public static final String PATH_DICTIONARY = "/dudu/dictionary";//新华字典查询
 
     public static final long ANIM_DURATION = 350;
 

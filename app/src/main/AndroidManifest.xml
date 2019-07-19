@@ -20,6 +20,11 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -29,6 +34,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".view.activity.WeatherActivity"></activity>
+        <activity android:name=".view.activity.DictionaryActivity" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="2e3fe70dafc15d373fb3f166708ac8da"></meta-data>
+        <service android:name="com.amap.api.location.APSService"></service>
         <activity
             android:name=".view.activity.SplashActivity"
             android:theme="@style/ThemeSplash">

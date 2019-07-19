@@ -116,4 +116,15 @@ public class TimeUtils {
         SimpleDateFormat dft = new SimpleDateFormat("MMdd");
         return dft.format(data);
     }
+
+    /**
+     * 获取小时
+     *
+     * @param data
+     * @return
+     */
+    public static String getHour(Date data) {
+        SimpleDateFormat dft = new SimpleDateFormat("HH");
+        return dft.format(data);
+    }
 }

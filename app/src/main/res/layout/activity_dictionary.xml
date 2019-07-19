@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.DictionaryActivity">
+
+    <include layout="@layout/search_dictionary_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="拼音："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/pinyin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="简介："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/brief"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="明细："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="部首："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/bushou"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="笔画数："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/bihua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_15"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_15"
+                android:paddingBottom="@dimen/size_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minEms="4"
+                    android:text="五笔："
+                    android:textColor="@color/text_3"
+                    android:textSize="@dimen/size_14" />
+
+                <TextView
+                    android:id="@+id/wubi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_6"
+                    android:textSize="@dimen/size_14" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

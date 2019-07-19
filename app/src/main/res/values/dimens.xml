@@ -10,6 +10,7 @@
     <dimen name="size_360">360dp</dimen>
     <dimen name="size_300">300dp</dimen>
     <dimen name="size_280">280dp</dimen>
+    <dimen name="size_250">250dp</dimen>
     <dimen name="size_246">246dp</dimen>
     <dimen name="size_220">220dp</dimen>
     <dimen name="size_200">200dp</dimen>

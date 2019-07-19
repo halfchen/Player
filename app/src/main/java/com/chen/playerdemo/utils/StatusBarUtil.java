@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.FloatRange;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -81,6 +84,7 @@ public class StatusBarUtil {
 
     /**
      * 设置状态栏颜色
+     *
      * @param activity
      * @param colorResId
      */
@@ -352,5 +356,26 @@ public class StatusBarUtil {
                     result, Resources.getSystem().getDisplayMetrics());
         }
         return result;
+    }
+
+    public static void setImmersiveStatusBar(@NonNull Activity activity) {
+        if (SdkUtil.sdkVersionGe21()) {
+            activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        if (SdkUtil.sdkVersionEq(19)) {
+            activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        }
+        activity.getWindow()
+                .getDecorView()
+                .setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    }
+
+    public static void setImmersiveStatusBarToolbar(@NonNull Toolbar toolbar, Context context) {
+        ViewGroup.MarginLayoutParams toolLayoutParams = (ViewGroup.MarginLayoutParams) toolbar.getLayoutParams();
+        toolLayoutParams.height = EnvUtil.getStatusBarHeight() + EnvUtil.getActionBarSize(context);
+        toolbar.setLayoutParams(toolLayoutParams);
+        toolbar.setPadding(0, EnvUtil.getStatusBarHeight(), 0, 0);
+        toolbar.requestLayout();
     }
 }

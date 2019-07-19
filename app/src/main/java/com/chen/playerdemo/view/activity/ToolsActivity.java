@@ -76,6 +76,7 @@ public class ToolsActivity extends BaseActivity {
                         @Override
                         public void onClick(View v) {
                             if (position == 0) {
+                                jumpActivity(Constants.PATH_WEATHER);
                             } else if (position == 1) {
                                 jumpActivity(Constants.PATH_HISTORY);
                             } else if (position == 2) {
@@ -85,6 +86,7 @@ public class ToolsActivity extends BaseActivity {
                             } else if (position == 4) {
                                 jumpActivity(Constants.PATH_WX_ARTICLE);
                             } else if (position == 5) {
+                                jumpActivity(Constants.PATH_DICTIONARY);
                             }
                         }
                     });

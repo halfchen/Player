@@ -184,23 +184,24 @@ public interface APIService {
      * 城市列表查询接口
      *
      * @param key
-     * @param city
-     * @param province
      * @return
      */
     @GET(Constants.Mob.citys)
-    Flowable<CityData> getCitys(@Query("key") String key,
-                                @Query("city") String city,
-                                @Query("province") String province);
+    Flowable<CityData> getCitys(@Query("key") String key);
 
     /**
      * 获取天气信息
      *
      * @param key
+     * @param city
+     * @param province
      * @return
      */
     @GET(Constants.Mob.weather)
-    Flowable<WeatherData> getWeather(@Query("key") String key);
+    Flowable<WeatherData> getWeather(@Query("key") String key,
+                                     @Query("district") String district,
+                                     @Query("city") String city,
+                                     @Query("province") String province);
 
     /**
      * 万年历查询
