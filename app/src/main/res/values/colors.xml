@@ -10,6 +10,7 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="transparentColor">#0000</color>
+    <color name="gray_trance">#c2b3b3b3</color>
     <color name="white">#ffffff</color>
     <color name="orange">#FFCDCA</color>
 

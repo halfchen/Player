@@ -1,5 +1,8 @@
 package com.chen.playerdemo.utils;
 
+import android.util.Log;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -124,7 +127,25 @@ public class TimeUtils {
      * @return
      */
     public static String getHour(Date data) {
-        SimpleDateFormat dft = new SimpleDateFormat("HH");
+        SimpleDateFormat dft = new SimpleDateFormat("HH:mm");
         return dft.format(data);
+    }
+
+    public static boolean timeCompare(String time, String end) {
+        SimpleDateFormat CurrentTime = new SimpleDateFormat("HH:mm");
+        try {
+            Date beginTime = CurrentTime.parse(end);
+            Date compareTime = CurrentTime.parse(time);
+            //判断是否大于18:00
+            if ((compareTime.getTime() - beginTime.getTime()) > 0) {
+                return true;//大于
+            } else {
+                return false;
+            }
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
     }
 }

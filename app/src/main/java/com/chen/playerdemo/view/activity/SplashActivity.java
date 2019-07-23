@@ -91,13 +91,13 @@ public class SplashActivity extends BaseActivity implements OnPermission {
         if (NetUtils.isConnected(SplashActivity.this)) {
             double random = Math.random();
             if (random < 0.25) {
-                mAdMessageBean = new AdMessageBean(6, "http://ww1.sinaimg.cn/large/0065oQSqly1g2pquqlp0nj30n00yiq8u.jpg", "http://gank.io/api");
+                mAdMessageBean = new AdMessageBean(8, "http://ww1.sinaimg.cn/large/0065oQSqly1g2pquqlp0nj30n00yiq8u.jpg", "http://gank.io/api");
             } else if (random >= 0.25 && random < 0.5) {
-                mAdMessageBean = new AdMessageBean(6, "https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg", "https://github.com/halfchen");
+                mAdMessageBean = new AdMessageBean(8, "https://ws1.sinaimg.cn/large/0065oQSqgy1fxno2dvxusj30sf10nqcm.jpg", "https://github.com/halfchen");
             } else if (random >= 0.5 && random <= 0.75) {
-                mAdMessageBean = new AdMessageBean(6, "https://ww1.sinaimg.cn/large/0065oQSqly1ftdtot8zd3j30ju0pt137.jpg", "https://ww1.sinaimg.cn/large/0065oQSqly1ftdtot8zd3j30ju0pt137.jpg");
+                mAdMessageBean = new AdMessageBean(8, "https://ww1.sinaimg.cn/large/0065oQSqly1ftdtot8zd3j30ju0pt137.jpg", "https://ww1.sinaimg.cn/large/0065oQSqly1ftdtot8zd3j30ju0pt137.jpg");
             } else {
-                mAdMessageBean = new AdMessageBean(6, "https://ww1.sinaimg.cn/large/0065oQSqly1ftf1snjrjuj30se10r1kx.jpg", "https://ww1.sinaimg.cn/large/0065oQSqly1ftf1snjrjuj30se10r1kx.jpg");
+                mAdMessageBean = new AdMessageBean(8, "https://ww1.sinaimg.cn/large/0065oQSqly1ftf1snjrjuj30se10r1kx.jpg", "https://ww1.sinaimg.cn/large/0065oQSqly1ftf1snjrjuj30se10r1kx.jpg");
             }
             ImageUtils.newInstance().load(mAdMessageBean.getAdPictureUrl(), ivAdvertising);
         }

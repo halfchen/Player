@@ -16,16 +16,16 @@
         android:layout_height="match_parent">
 
         <android.support.design.widget.AppBarLayout
-            android:id="@+id/app_bar"
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_250"
+            android:background="@color/transparent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/toolbar_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleGravity="center_horizontal"
                 app:expandedTitleMarginTop="220dp"
                 app:expandedTitleTextAppearance="@style/textToolbarTitle"
@@ -93,8 +93,53 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:padding="@dimen/size_5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/size_60" />
+
+                <TextView
+                    android:id="@+id/weather"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/size_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20" />
+
+                <TextView
+                    android:id="@+id/wind"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/size_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20" />
+
+                <TextView
+                    android:id="@+id/humidity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/size_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/size_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20" />
+
+                <com.chen.playerdemo.widget.ArcProgressView
+                    android:id="@+id/arc_progress"
+                    android:layout_width="@dimen/size_160"
+                    android:layout_height="@dimen/size_160"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginBottom="@dimen/size_30" />
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>

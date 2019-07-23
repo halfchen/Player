@@ -1,7 +1,5 @@
 package com.chen.playerdemo.presenter;
 
-import android.util.Log;
-
 import com.chen.playerdemo.base.BasePresenter;
 import com.chen.playerdemo.bean.tools.WeatherData;
 import com.chen.playerdemo.contract.WeatherContract;
@@ -35,11 +33,12 @@ public class WeatherPresenter extends BasePresenter<WeatherContract.View> implem
                     @Override
                     public void accept(WeatherData weather) throws Exception {
                         mView.setData(weather);
+                        mView.hideLoading();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        mView.hideLoading();
                     }
                 });
     }

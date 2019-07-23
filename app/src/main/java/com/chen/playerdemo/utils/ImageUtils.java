@@ -113,7 +113,8 @@ public class ImageUtils {
      * @param resId
      * @param imageView
      */
-    public void loadPickColor(Integer resId, ImageView imageView) {
+    public int[] loadPickColor(Integer resId, ImageView imageView) {
+        final int[] darkColor = new int[2];
         Glide.with(App.getContext()).asBitmap()
                 .load(resId)
                 .into(new SimpleTarget<Bitmap>() {
@@ -125,15 +126,22 @@ public class ImageUtils {
                                 if (palette == null) return;
                                 if (palette.getDarkVibrantColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
                                     createLinearGradientBitmap(palette.getDarkVibrantColor(Color.TRANSPARENT), palette.getVibrantColor(Color.TRANSPARENT), imageView);
+                                    darkColor[0] = palette.getDarkVibrantColor(Color.TRANSPARENT);
+                                    darkColor[1] = palette.getVibrantColor(Color.TRANSPARENT);
                                 } else if (palette.getDarkMutedColor(Color.TRANSPARENT) != Color.TRANSPARENT) {
                                     createLinearGradientBitmap(palette.getDarkMutedColor(Color.TRANSPARENT), palette.getMutedColor(Color.TRANSPARENT), imageView);
+                                    darkColor[0] = palette.getDarkMutedColor(Color.TRANSPARENT);
+                                    darkColor[1] = palette.getMutedColor(Color.TRANSPARENT);
                                 } else {
                                     createLinearGradientBitmap(palette.getLightMutedColor(Color.TRANSPARENT), palette.getLightVibrantColor(Color.TRANSPARENT), imageView);
+                                    darkColor[0] = palette.getLightMutedColor(Color.TRANSPARENT);
+                                    darkColor[1] = palette.getLightVibrantColor(Color.TRANSPARENT);
                                 }
                             }
                         });
                     }
                 });
+        return darkColor;
     }
 
     /**
